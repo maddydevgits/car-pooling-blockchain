@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
+    </head>
+    <body>
+        <div class="login-page">
+            <div class="form">
+              <form class="register-form" action="/registerUser" method="POST">
+                <input type="text" placeholder="enter wallet address" name="walletaddr"/>
+                <input type="text" placeholder="enter name" name="name" />
+                <input type="text" placeholder="enter mobile" name="mobile" />
+                <input type="password" placeholder="password" name="password"/>
+                <input type="text" placeholder="email address" name="email" />
+                <button>Create Account</button>
+                <p class="message">Already registered? <a href="#">Sign In</a></p>
+              </form>
+              <form class="login-form" action="/loginUser" method="POST">
+                <input type="text" placeholder="wallet addr" name="walletaddr1"/>
+                <input type="password" placeholder="password" name="password1"/>
+                <button>login</button>
+                <p class="message">Not registered? <a href="#">Create an account</a></p>
+              </form>
+            </div>
+          </div>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="{{url_for('static',filename='style.js')}}"></script>
+    </body>
+</html>
