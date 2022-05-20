@@ -5,4 +5,5 @@ Peer to Peer Car Pooling is a project on Blockchain to introduce the concepts of
 # Development Process
 1. Initialise Truffle  :heavy_check_mark:
 2. Create Register and Login for the project :heavy_check_mark:
-3. Create a dashboard page :x:
+3. Create a dashboard page :heavy_check_mark:
+4. create a ride :x:
