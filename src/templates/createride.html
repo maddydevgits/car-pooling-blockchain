@@ -59,54 +59,57 @@
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav m-auto">
-	        	<li class="nav-item active"><a href="/dashboard" class="nav-link">Home</a></li>
-	        	<li class="nav-item"><a href="/createride" class="nav-link">Create Ride</a></li>
+	        	<li class="nav-item"><a href="/dashboard" class="nav-link">Home</a></li>
+	        	<li class="nav-item active"><a href="/createride" class="nav-link">Create Ride</a></li>
 	        	<li class="nav-item"><a href="/bidrequests" class="nav-link">Bid Requests</a></li>
 				<li class="nav-item"><a href="/myrides" class="nav-link">My Rides</a></li>
 				<li class="nav-item"><a href="/mybids" class="nav-link">My Bids</a></li>
-	          <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+	            <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
 	        </ul>
 	      </div>
 	    </div>
 	  </nav>
     <!-- END nav -->
-
 	</section>
-	<div class="container">
-		<h3 style="text-align: center;">Our rides available through us</h3>
-		<div class="table-responsive">
-			<table class="table table-bordered">
-				<tr>
-					<th>Owner</th>
-					<th>Places</th>
-					<th>Car Type</th>
-					<th>Pool Size</th>
-					<th>Trip Id</th>
-					<th>Min. Amount</th>
-					<th>Starting Place</th>
-					<th>Last Place</th>
-					<th>Date</th>
-					<th>Book</th>
-				</tr>
-				{%for i in range(0, len)%}
-				<tr>
-					<td>{{dashboard_data[i][0]}}</td>
-					<td>{{dashboard_data[i][1]}}</td>
-					<td>{{dashboard_data[i][2]}}</td>
-					<td>{{dashboard_data[i][3]}}</td>
-					<td>{{dashboard_data[i][4]}}</td>
-					<td>{{dashboard_data[i][5]}}</td>
-					<td>{{dashboard_data[i][6]}}</td>
-					<td>{{dashboard_data[i][7]}}</td>
-					<td>{{dashboard_data[i][8]}}</td>
-					<td><button class="btn btn-warning"><a href="/book/{{dashboard_data[i][4]}}">Book</a></button></td>
-				</tr>
-				{%endfor%}
-			</table>
-			</div>
-	</div>
+    <section>
+        <div class="container">
+                <h3 style="text-align: center;">Create a Car Ride</h3>
+                <form action="/createrideForm" method="POST">
+                    <div class="form-group">
+                        <label for="cartype">What was your car type</label>
+                        <input type="text" class="form-control" id="cartype" placeholder="Enter your car type " name="cartype">
+                    </div>
+                    <div class="form-group">
+                        <label for="poolsize">What is the pool size that you were looking for?</label>
+                        <input type="number" class="form-control" id="poolsize" placeholder="Enter your pool size " name="poolsize">
+                    </div>
+                    <div class="form-group">
+                        <label for="minamount">What is the minimum amount that you want your pal to pay?</label>
+                        <input type="number" class="form-control" id="minamount" placeholder="Enter minimum amount " name="minamount">
+                    </div>
+                    <div class="form-group">
+                        <label for="from">What is the first point in the ride?</label>
+                        <input type="text" class="form-control" id="from" placeholder="Enter first place " name="from">
+                    </div>
+                    <div class="form-group">
+                        <label for="to">What is the last point in the ride?</label>
+                        <input type="text" class="form-control" id="to" placeholder="Enter last place " name="to">
+                    </div>
+                    <div class="form-group">
+                        <label for="places">Tell us some places that comes in your ride?</label>
+                        <input type="text" class="form-control" id="places" placeholder="Enter some places " name="places">
+                    </div>
+					<div class="form-group">
+                        <label for="date">Tell us on which date you want to make ride?</label>
+                        <input type="date" class="form-control" id="date" placeholder="Enter ride date " name="date">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-login" id="login">Create Ride</button> <br/><br/>
+                </form>
+        </div>
+        
+    </section>
 
-	<script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+  <script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
   <script src="{{url_for('static',filename='js/popper.js')}}"></script>
   <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
   <script src="{{url_for('static',filename='js/main.js')}}"></script>

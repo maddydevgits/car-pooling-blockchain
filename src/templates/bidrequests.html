@@ -59,54 +59,48 @@
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav m-auto">
-	        	<li class="nav-item active"><a href="/dashboard" class="nav-link">Home</a></li>
+	        	<li class="nav-item"><a href="/dashboard" class="nav-link">Home</a></li>
 	        	<li class="nav-item"><a href="/createride" class="nav-link">Create Ride</a></li>
-	        	<li class="nav-item"><a href="/bidrequests" class="nav-link">Bid Requests</a></li>
+	        	<li class="nav-item active"><a href="/bidrequests" class="nav-link">Bid Requests</a></li>
 				<li class="nav-item"><a href="/myrides" class="nav-link">My Rides</a></li>
 				<li class="nav-item"><a href="/mybids" class="nav-link">My Bids</a></li>
-	          <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+	            <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
 	        </ul>
 	      </div>
 	    </div>
 	  </nav>
     <!-- END nav -->
-
 	</section>
-	<div class="container">
-		<h3 style="text-align: center;">Our rides available through us</h3>
-		<div class="table-responsive">
-			<table class="table table-bordered">
-				<tr>
-					<th>Owner</th>
-					<th>Places</th>
-					<th>Car Type</th>
-					<th>Pool Size</th>
-					<th>Trip Id</th>
-					<th>Min. Amount</th>
-					<th>Starting Place</th>
-					<th>Last Place</th>
-					<th>Date</th>
-					<th>Book</th>
-				</tr>
-				{%for i in range(0, len)%}
-				<tr>
-					<td>{{dashboard_data[i][0]}}</td>
-					<td>{{dashboard_data[i][1]}}</td>
-					<td>{{dashboard_data[i][2]}}</td>
-					<td>{{dashboard_data[i][3]}}</td>
-					<td>{{dashboard_data[i][4]}}</td>
-					<td>{{dashboard_data[i][5]}}</td>
-					<td>{{dashboard_data[i][6]}}</td>
-					<td>{{dashboard_data[i][7]}}</td>
-					<td>{{dashboard_data[i][8]}}</td>
-					<td><button class="btn btn-warning"><a href="/book/{{dashboard_data[i][4]}}">Book</a></button></td>
-				</tr>
-				{%endfor%}
-			</table>
-			</div>
-	</div>
+    <section>
+        <div class="container">
+                <h3 style="text-align: center;">Bid Ride</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Trip Id</th>
+                            <th>Bidder Wallet</th>
+							<th>Bidder Name</th>
+                            <th>Place of Pickup</th>
+                            <th>Bid Amount</th>
+                            <th>Accept Bid</th>
+                        </tr>
+                        {%for i in range(0, len)%}
+                        <tr>
+                            <td>{{dashboard_data[i][0]}}</td>
+                            <td>{{dashboard_data[i][1]}}</td>
+                            <td>{{dashboard_data[i][2]}}</td>
+                            <td>{{dashboard_data[i][3]}}</td>
+							<td>{{dashboard_data[i][4]}}</td>
+                            <td><button class="btn btn-warning"><a href="/bid/{{dashboard_data[i][1]}}/{{dashboard_data[i][0]}}">Accept</a></button></td>
+                        </tr>
+                        {%endfor%}
+                    </table>
+                </div>
+        </div>
+        
+    </section>
 
-	<script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+  <script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
   <script src="{{url_for('static',filename='js/popper.js')}}"></script>
   <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
   <script src="{{url_for('static',filename='js/main.js')}}"></script>
