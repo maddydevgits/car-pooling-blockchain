@@ -247,20 +247,39 @@ def myrides():
 
     _tripids,_bidders,_bidplaces,_bidamounts,_bidstatus=contract.functions.viewBids().call()
     data=[]
-    for i in range(len(_rideid)):
-        if _drivers[i]==walletaddr:
-            dummy=[]
-            dummy.append(_rideid[i])
-            ownerIndex=_usernames.index(walletaddr)
-            k=str(_names[ownerIndex])
-            tripid=_tripids[i]
-            for j in range(len(_bidders)):
-                if tripid==_rideid[j] and _bidstatus[j]==True:
+    count=0
+    print(_rideid,_drivers,_bidders,_tripids)
+    try:
+        for i in range(len(_rideid)):
+            rideIndex=_rideid.index(_rideid[i])
+            _driver=_drivers[rideIndex]
+            if _driver==walletaddr:
+                count+=1
+                dummy=[]
+                dummy.append(_rideid[i])
+                ownerIndex=_usernames.index(walletaddr)
+                k=str(_names[ownerIndex])
+                dummy.append(k)
+                dummy.append(_dates[ownerIndex])
+                data.append(dummy)
+        print('data:',data)
+        dummyids=[]
+        for m in range(len(data)):
+            dummyids.append(data[m][0])
+        print(dummyids)
+        for j in range(len(_bidders)):
+            tripid=_tripids[j]
+            tripownerIndex=_rideid.index(tripid)
+            tripowner=_drivers[tripownerIndex]
+            if tripowner==walletaddr:
+                dataIndex=dummyids.index(tripid)
+                print(data[dataIndex])
+                if _bidstatus[j]==True:
                     bidderIndex=_usernames.index(_bidders[j])
-                    k+=','+str(_names[bidderIndex])
-            dummy.append(k)
-            dummy.append(_dates[i])
-            data.append(dummy)
+                    data[dataIndex][1]=data[dataIndex][1]+','+_names[bidderIndex]
+    except:
+        data=[]
+    print(data)
     l=len(data)
     return render_template('myrides.html',len=l,dashboard_data=data)
 
